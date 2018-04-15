@@ -29,7 +29,7 @@ export class Login extends React.Component {
                 item.forEach(function (err) {
                     toast.error(err);
                 });
-            }
+            });
         })
     }
 
