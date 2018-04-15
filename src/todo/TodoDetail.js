@@ -8,6 +8,21 @@ import {Loading} from "../utils/Loading";
 
 export class TodoDetail extends React.Component {
 
+    itemDelete = () => {
+        let id = this.props.match.params.id;
+        let _this = this;
+        toast.info("Deleting Todo #" + id);
+        Api.get('/todo/delete/' + id + '/', (cb) => {
+            if (cb.success) {
+                toast.success("Todo #" + id + " deleted");
+                _this.props.history.push('/todo/list');
+            } else {
+                toast.warn("Warning: Deletion unsuccessful");
+            }
+        }, (err) => {
+            toast.error("Error: " + err.responseJSON.detail);
+        });
+    };
     itemProgress = (progress) => () => {
         let id = this.props.match.params.id;
         let _this = this;
@@ -36,22 +51,6 @@ export class TodoDetail extends React.Component {
         let _this = this;
         Api.get('/todo/detail/' + id + '/', (cb) => {
             _this.setState({detail: cb});
-        }, (err) => {
-            toast.error("Error: " + err.responseJSON.detail);
-        });
-    }
-
-    itemDelete() {
-        let id = this.props.match.params.id;
-        let _this = this;
-        toast.info("Deleting Todo #" + id);
-        Api.get('/todo/delete/' + id + '/', (cb) => {
-            if (cb.success) {
-                toast.success("Todo #" + id + " deleted");
-                _this.props.history.push('/todo/list');
-            } else {
-                toast.warn("Warning: Deletion unsuccessful");
-            }
         }, (err) => {
             toast.error("Error: " + err.responseJSON.detail);
         });

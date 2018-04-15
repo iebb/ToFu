@@ -1,5 +1,6 @@
 import React from "react";
 import $ from 'jquery';
+import {toast} from "react-toastify";
 
 export class Api extends React.Component {
 }
@@ -70,7 +71,10 @@ Api.createUser = function (data, cb, cbe) {
 };
 
 Api.get = function (endpoint, cb, cbe) {
-    if (!localStorage.token) return false;
+    if (!localStorage.token) {
+        toast.error("Login Required");
+        return false;
+    }
     $.get({
         url: Api.endPoint + endpoint,
         headers: {
@@ -87,7 +91,10 @@ Api.get = function (endpoint, cb, cbe) {
 
 
 Api.post = function (endpoint, data, cb, cbe) {
-    if (!localStorage.token) return false;
+    if (!localStorage.token) {
+        toast.error("Login Required");
+        return false;
+    }
     $.post({
         url: Api.endPoint + endpoint,
         headers: {
@@ -104,7 +111,10 @@ Api.post = function (endpoint, data, cb, cbe) {
 };
 
 Api.getData = function (endpoint, data, cb, cbe) {
-    if (!localStorage.token) return false;
+    if (!localStorage.token) {
+        toast.error("Login Required");
+        return false;
+    }
     $.get({
         url: Api.endPoint + endpoint,
         headers: {

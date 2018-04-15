@@ -28,3 +28,24 @@
 * :white_check_mark: 待办事项可以设置expire date
 * :white_check_mark: 支持按照不同的方式排序，如优先级，expire date
 	* 也支持按权重排序
+
+其他功能：
+
+* :white_check_mark: 用户注册 / 登录
+* :white_check_mark: 首页显示待办事项数量，以及最高权重的几项
+
+
+
+------------
+
+#### 截图:
+
+注册 / 登录：
+https://cl.ly/3L2L2V0A1v2L
+
+添加新事项：
+https://cl.ly/3e3y2c1B261Q
+
+修改 / 标记 / 删除 / 筛选 / 排序 / 翻页：
+https://cl.ly/1L2q22273Q3k
+
