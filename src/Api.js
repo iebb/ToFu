@@ -57,7 +57,7 @@ Api.getToken = function (username, pass, cb, cbe) {
 };
 
 Api.createUser = function (data, cb, cbe) {
-    return $.post({
+    $.post({
         url: Api.endPoint + "/user/add",
         data: data,
         success: function (data) {
@@ -70,7 +70,8 @@ Api.createUser = function (data, cb, cbe) {
 };
 
 Api.get = function (endpoint, cb, cbe) {
-    return $.get({
+    if (!localStorage.token) return false;
+    $.get({
         url: Api.endPoint + endpoint,
         headers: {
             'Authorization': 'Token ' + localStorage.token,
@@ -86,7 +87,8 @@ Api.get = function (endpoint, cb, cbe) {
 
 
 Api.post = function (endpoint, data, cb, cbe) {
-    return $.post({
+    if (!localStorage.token) return false;
+    $.post({
         url: Api.endPoint + endpoint,
         headers: {
             'Authorization': 'Token ' + localStorage.token,
@@ -102,7 +104,8 @@ Api.post = function (endpoint, data, cb, cbe) {
 };
 
 Api.getData = function (endpoint, data, cb, cbe) {
-    return $.get({
+    if (!localStorage.token) return false;
+    $.get({
         url: Api.endPoint + endpoint,
         headers: {
             'Authorization': 'Token ' + localStorage.token,
